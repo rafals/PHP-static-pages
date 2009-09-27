@@ -1,6 +1,11 @@
 <?php
 
-$request = $_SERVER['REQUEST_URI'];
+// strona umieszczona na http://a.com/
+//$request = $_SERVER['REQUEST_URI'];
+
+// strona umieszczona na http://a.com/b/c/d/
+$request = str_replace('/b/c/d/', '/', $_SERVER['REQUEST_URI']);
+
 $params = array();
 $params_num = 0;
 

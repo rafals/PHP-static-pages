@@ -13,6 +13,10 @@ foreach(split("/", $request) as $param) {
 
 $node = 0;
 
+function file_join($arr) {
+	return join(DIRECTORY_SEPARATOR, $arr);
+}
+
 function content($view = 'index') {
 	global $node;
 	global $params_num;
@@ -29,12 +33,12 @@ function content($view = 'index') {
 			$path = array('404');
 		}
 	}
-	$file = join('/', $path).'.php';
+	$file = file_join($path).'.php';
 	//echo $file;
 	$node++;
 	if (file_exists($file)) { include($file); } else { include('404.php'); }
 }
 
-include('views/layout.php');
+include(file_join(array('views', 'layout.php')));
 
 ?>
